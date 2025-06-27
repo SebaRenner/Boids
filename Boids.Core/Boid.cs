@@ -35,7 +35,11 @@ namespace Boids.Core
             return steering;
         }
 
-        private Vec2 Alignment(IEnumerable<Boid> neighbors) => throw new NotImplementedException();
+        private Vec2 Alignment(IEnumerable<Boid> neighbors)
+        {
+            var sumVelocity = neighbors.Select(n => n.Velocity).Sum();
+            return sumVelocity / neighbors.Count() - Velocity;
+        }
 
         private Vec2 Cohesion(IEnumerable<Boid> neighbors) => throw new NotImplementedException();
     }
