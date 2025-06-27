@@ -8,21 +8,35 @@ namespace Boids.Core
 
         public Vec2 Velocity { get; set; }
 
-        public Vec2 Separation(IEnumerable<Boid> neighbors)
+        public void Update(IEnumerable<Boid> neighbors)
+        {
+            var separation = Separation(neighbors);
+            var alignment = Alignment(neighbors);
+            var cohesion = Cohesion(neighbors);
+
+            var acceleration = separation + alignment + cohesion;
+
+            Velocity += acceleration;
+            Position += Velocity;
+        }
+
+        private Vec2 Separation(IEnumerable<Boid> neighbors)
         {
             var steering = new Vec2(0, 0);
 
             foreach (var neighbor in neighbors)
             {
                 var distance = Position.Distance(neighbor.Position);
-                var diff = Position.Subtract(neighbor.Position);
+                var diff = Position - neighbor.Position;
 
-                steering = new Vec2(
-                    steering.X + diff.Divide(distance * distance).X,
-                    steering.Y + diff.Divide(distance * distance).Y);
+                steering += diff / (distance * distance);
             }
 
             return steering;
         }
+
+        private Vec2 Alignment(IEnumerable<Boid> neighbors) => throw new NotImplementedException();
+
+        private Vec2 Cohesion(IEnumerable<Boid> neighbors) => throw new NotImplementedException();
     }
 }

@@ -12,15 +12,13 @@
 
         public double Y { get; set; }
 
-        public Vec2 Subtract(Vec2 other)
-        {
-            return new Vec2(X - other.X, Y - other.Y);
-        }
+        public static Vec2 operator +(Vec2 a, Vec2 b) => new Vec2(a.X + b.X, a.Y + b.Y);
 
-        public Vec2 Divide(double scalar)
-        {
-            return new Vec2(X / scalar, Y / scalar);
-        }
+        public static Vec2 operator -(Vec2 a, Vec2 b) => new Vec2(a.X - b.X, a.Y - b.Y);
+
+        public static Vec2 operator /(Vec2 v, double scalar) => new Vec2(v.X / scalar, v.Y / scalar);
+
+        public static Vec2 operator *(Vec2 v, double scalar) => new Vec2(v.X * scalar, v.Y * scalar);
 
         public double Distance(Vec2 other) 
         { 
