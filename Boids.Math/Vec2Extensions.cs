@@ -4,7 +4,7 @@
     {
         public static Vec2 Sum(this IEnumerable<Vec2> vectors)
         {
-            var sum = new Vec2(0, 0);
+            var sum = new Vec2();
             foreach (var v in vectors)
             {
                 sum += v;

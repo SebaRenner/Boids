@@ -22,7 +22,7 @@ namespace Boids.Core
 
         private Vec2 Separation(IEnumerable<Boid> neighbors)
         {
-            var steering = new Vec2(0, 0);
+            var steering = new Vec2();
 
             foreach (var neighbor in neighbors)
             {
@@ -38,9 +38,15 @@ namespace Boids.Core
         private Vec2 Alignment(IEnumerable<Boid> neighbors)
         {
             var sumVelocity = neighbors.Select(n => n.Velocity).Sum();
-            return sumVelocity / neighbors.Count() - Velocity;
+            var avgVelocity = sumVelocity / neighbors.Count();
+            return avgVelocity - Velocity;
         }
 
-        private Vec2 Cohesion(IEnumerable<Boid> neighbors) => throw new NotImplementedException();
+        private Vec2 Cohesion(IEnumerable<Boid> neighbors)
+        {
+            var sumPosition = neighbors.Select(n => n.Position).Sum();
+            var avgPosition = sumPosition / neighbors.Count();
+            return avgPosition - Position;
+        }
     }
 }

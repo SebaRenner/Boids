@@ -2,6 +2,12 @@
 {
     public struct Vec2
     {
+        public Vec2()
+        {
+            X = 0; 
+            Y = 0;   
+        }
+
         public Vec2(double x, double y)
         {
             X = x; 
