@@ -4,6 +4,12 @@ namespace Boids.Core
 {
     public class Boid
     {
+        public Boid(Vec2 position, Vec2 velocity)
+        {
+            Position = position;
+            Velocity = velocity;
+        }
+
         public Vec2 Position { get; set; }
 
         public Vec2 Velocity { get; set; }
