@@ -4,6 +4,7 @@ using Boids.Math;
 using OpenTK.Graphics.OpenGL4;
 using OpenTK.Windowing.Common;
 using OpenTK.Windowing.Desktop;
+using OpenTK.Windowing.GraphicsLibraryFramework;
 
 namespace Boids.Graphics
 {
@@ -36,6 +37,11 @@ namespace Boids.Graphics
         protected override void OnUpdateFrame(FrameEventArgs args)
         {
             base.OnUpdateFrame(args);
+
+            if (KeyboardState.IsKeyDown(Keys.Escape))
+            {
+                Close();
+            }
 
             foreach (var boid in boids)
             {
