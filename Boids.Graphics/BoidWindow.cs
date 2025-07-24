@@ -13,6 +13,8 @@ public class BoidWindow
     private int WindowWidth;
     private int WindowHeight;
 
+    private const float ProximityRadius = 100.0f;
+
     public BoidWindow(int windowWidth, int windowHeight, int birds, int fps = 15)
     {
         WindowWidth = windowWidth;
@@ -48,7 +50,9 @@ public class BoidWindow
     {
         foreach (var boid in boids)
         {
-            var neighbors = boids.Where(b => b != boid);
+            var neighbors = boids
+                .Where(b => b != boid && boid.Position.Distance(b.Position) < ProximityRadius);
+
             boid.Update(neighbors);
             WrapBoid(boid);
         }

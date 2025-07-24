@@ -134,4 +134,20 @@ public class Vec2Test
         // Assert
         Assert.Equal(expected, testee);
     }
+
+    [Fact]
+    public void Vec2_Length()
+    {
+        // Arrange
+        var x = 5;
+        var y = 12;
+
+        var testee = new Vec2(x, y);
+
+        // Act
+        var length = testee.Length();
+
+        // Assert
+        Assert.Equal(13, length);
+    }
 }

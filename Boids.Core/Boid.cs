@@ -33,6 +33,10 @@ namespace Boids.Core
             foreach (var neighbor in neighbors)
             {
                 var distance = Position.Distance(neighbor.Position);
+
+                if (distance == 0)
+                    continue;
+
                 var diff = Position - neighbor.Position;
 
                 steering += diff / (distance * distance);
@@ -43,15 +47,21 @@ namespace Boids.Core
 
         private Vec2 Alignment(IEnumerable<Boid> neighbors)
         {
+            var count = neighbors.Count();
+            if (count == 0) return new Vec2();
+
             var sumVelocity = neighbors.Select(n => n.Velocity).Sum();
-            var avgVelocity = sumVelocity / neighbors.Count();
+            var avgVelocity = sumVelocity / count;
             return avgVelocity - Velocity;
         }
 
         private Vec2 Cohesion(IEnumerable<Boid> neighbors)
         {
+            int count = neighbors.Count();
+            if (count == 0) return new Vec2();
+
             var sumPosition = neighbors.Select(n => n.Position).Sum();
-            var avgPosition = sumPosition / neighbors.Count();
+            var avgPosition = sumPosition / count;
             return avgPosition - Position;
         }
     }

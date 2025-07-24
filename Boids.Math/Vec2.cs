@@ -2,12 +2,6 @@
 {
     public struct Vec2
     {
-        public Vec2()
-        {
-            X = 0; 
-            Y = 0;   
-        }
-
         public Vec2(double x, double y)
         {
             X = x; 
@@ -32,6 +26,11 @@
             var dy = Y - other.Y;
 
             return System.Math.Sqrt(dx * dx + dy * dy);
+        }
+
+        public double Length()
+        {
+            return System.Math.Sqrt(X * X + Y * Y);
         }
     }
 }

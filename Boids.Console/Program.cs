@@ -1,4 +1,4 @@
 ﻿using Boids.Graphics;
 
-var window = new BoidWindow(1920, 1080, 2, 1);
+var window = new BoidWindow(1920, 1080, 4, 1);
 
