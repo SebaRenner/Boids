@@ -32,5 +32,15 @@
         {
             return System.Math.Sqrt(X * X + Y * Y);
         }
+
+        public Vec2 Normalized()
+        {
+            double length = Length();
+            if (length == 0)
+                return new Vec2(0, 0);
+
+            return this / length;
+        }
+
     }
 }
