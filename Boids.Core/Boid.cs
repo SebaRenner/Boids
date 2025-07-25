@@ -7,6 +7,10 @@ public class Boid
     private const float MaxSpeed = 4.0f;
     private const float MaxForce = 0.5f;
 
+    private const float SeparationWeight = 100.0f;
+    private const float AlignmentWeight = 1.0f;
+    private const float CohesionWeight = 1.0f;
+
     public Boid(Vec2 position, Vec2 velocity)
     {
         Position = position;
@@ -24,7 +28,11 @@ public class Boid
         var cohesion = Cohesion(neighbors);
 
         // consider wandering if acceleration is Vec(0,0) -> has no neighbors
-        var acceleration = separation + alignment + cohesion;
+        var acceleration = 
+            separation * SeparationWeight + 
+            alignment * AlignmentWeight + 
+            cohesion * CohesionWeight;
+        
         acceleration = Limit(acceleration, MaxForce);
        
         Velocity += acceleration;
