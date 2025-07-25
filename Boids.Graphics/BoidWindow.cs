@@ -23,7 +23,11 @@ public class BoidWindow
         for (int i = 0; i < birds; i++)
         {
             var position = new Vec2(rng.Next(WindowWidth), rng.Next(WindowHeight));
-            var velocity = new Vec2(rng.NextDouble() * 2 - 1, rng.NextDouble() * 2 - 1);
+
+            var angle = rng.NextDouble() * 2 * System.Math.PI;
+            var speed = 1.0 + rng.NextDouble();
+            var velocity = new Vec2(System.Math.Cos(angle), System.Math.Sin(angle)) * speed;
+
             boids.Add(new Boid(position, velocity));
         }
 
