@@ -33,6 +33,11 @@
             return System.Math.Sqrt(X * X + Y * Y);
         }
 
+        public double LengthSquared()
+        {
+            return X * X + Y * Y;
+        }
+
         public Vec2 Normalized()
         {
             double length = Length();

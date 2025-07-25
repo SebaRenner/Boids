@@ -152,6 +152,22 @@ public class Vec2Test
     }
 
     [Fact]
+    public void Vec2_LengthSquared()
+    {
+        // Arrange
+        var x = 3;
+        var y = 5;
+
+        var testee = new Vec2(x, y);
+
+        // Act
+        var length = testee.LengthSquared();
+
+        // Assert
+        Assert.Equal(34, length);
+    }
+
+    [Fact]
     public void Vec2_Normalized()
     {
         // Arrange

@@ -83,8 +83,8 @@ public class Boid
 
     private Vec2 Limit(Vec2 vector, float max)
     {
-        // length is costly since sqrt, think about solution with lengthSquared
-        if (vector.Length() > max)
+        // Using LengthSquared instead of .Length() > max to spare sqrt calculation
+        if (vector.LengthSquared() > max * max)
         {
             return vector.Normalized() * max;
         }
