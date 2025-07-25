@@ -150,4 +150,36 @@ public class Vec2Test
         // Assert
         Assert.Equal(13, length);
     }
+
+    [Fact]
+    public void Vec2_Normalized()
+    {
+        // Arrange
+        var x = 3;
+        var y = 4;
+
+        var testee = new Vec2(x, y);
+
+        // Act
+        var normalized = testee.Normalized();
+
+        // Assert
+        Assert.Equal(new Vec2(0.6, 0.8), normalized);
+    }
+
+    [Fact]
+    public void Vec2_Normalized_LengthZero()
+    {
+        // Arrange
+        var x = 0;
+        var y = 0;
+
+        var testee = new Vec2(x, y);
+
+        // Act
+        var normalized = testee.Normalized();
+
+        // Assert
+        Assert.Equal(new Vec2(0, 0), normalized);
+    }
 }
